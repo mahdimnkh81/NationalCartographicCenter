@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}تأیید حذف داده‌ها{% endblock %}
+
+{% block content %}
+  <h2>آیا از حذف تمام داده‌ها مطمئن هستید؟</h2>
+
+  {% if error %}
+    <p style="color:red;">{{ error }}</p>
+  {% endif %}
+
+  <form method="post" style="margin-top: 30px;">
+    {% csrf_token %}
+    <button type="submit" style="
+        padding: 14px 25px;
+        font-size: 18px;
+        color: #fff;
+        background-color: #e74c3c;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    ">بله، حذف کن</button>
+
+    <a href="/" style="
+        padding: 14px 25px;
+        font-size: 18px;
+        color: #fff;
+        background-color: #2ecc71;
+        border-radius: 25px;
+        text-decoration: none;
+        margin-right: 20px;
+        transition: background-color 0.3s ease;
+    ">بازگشت</a>
+  </form>
+{% endblock %}

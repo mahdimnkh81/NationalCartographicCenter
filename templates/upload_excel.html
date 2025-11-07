@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <title>آپلود فایل اکسل</title>
+    <style>
+        body {
+            font-family: "Vazir", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+            background: linear-gradient(135deg, #d4fc79, #96e6a1);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        h1 {
+            font-size: 36px;
+            font-weight: normal;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .upload-container {
+            width: 90%;
+            max-width: 400px;
+            background-color: #ffffffcc;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+        input[type="file"] {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+        button {
+            padding: 10px 30px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #2ecc71;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            outline: none;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <div class="upload-container">
+        <h1>آپلود فایل اکسل</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="excel_file">انتخاب فایل اکسل:</label>
+            <input
+                type="file"
+                name="excel_file"
+                id="excel_file"
+                accept=".xlsx,.xls"
+                required
+            >
+            <button type="submit">آپلود و ذخیره</button>
+        </form>
+    </div>
+</body>
+</html>

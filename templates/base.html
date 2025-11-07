@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}وبسایت جستجو{% endblock %}</title>
+  <style>
+    body {
+      font-family: "Vazir", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #d4fc79, #96e6a1);
+      color: #333;
+    }
+
+    /* ساختار صفحه */
+    .container {
+      width: 100%;
+      max-width: 1400px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+    }
+
+    /* سایدبار (منو سمت راست) */
+    .sidebar {
+      width: 250px;
+      padding: 10px;
+      border-left: 1px solid #ddd;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar ul li {
+      margin-bottom: 15px;
+    }
+
+    .sidebar ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 18px;
+      background-color: #2ecc71;
+      padding: 10px;
+      border-radius: 5px;
+      display: block;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .sidebar ul li a:hover {
+      background-color: #27ae60;
+    }
+
+    /* محتوای اصلی */
+    .main-content {
+      flex: 1;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* طراحی جدید باکس جستجو */
+    .search-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 20px;
+      gap: 10px;
+    }
+
+    .search-box input[type="text"] {
+      width: 80%;
+      padding: 14px;
+      font-size: 18px;
+      border: 2px solid #2ecc71;
+      border-radius: 25px;
+      text-align: right;
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .search-box input[type="text"]:focus {
+      border-color: #27ae60;
+      box-shadow: 0 0 8px rgba(39, 174, 96, 0.5);
+    }
+
+    .search-box button {
+      padding: 14px 25px;
+      font-size: 18px;
+      color: #fff;
+      background-color: #2ecc71;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .search-box button:hover {
+      background-color: #27ae60;
+    }
+
+    /* نمایش نتایج */
+    .results {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      width: 100%;
+    }
+
+    .result-item {
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      width: 280px;
+    }
+
+    .result-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .feedback-options {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .feedback-options label {
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .feedback-options input {
+      margin-right: 5px;
+    }
+
+    /* دکمه ثبت بازخورد همان‌جای قبلی */
+    .feedback-form {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .feedback-btn {
+      padding: 14px 25px;
+      font-size: 18px;
+      color: #fff;
+      background-color: #2ecc71;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .feedback-btn:hover {
+      background-color: #27ae60;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- منوی سمت راست -->
+    <div class="sidebar">
+      <ul>
+        <li><a href="{% url 'search_elastic_view' %}">جستجوی واژگانی</a></li>
+        <li><a href="{% url 'search_sbert_view' %}">جستجوی معنایی</a></li>
+        <li><a href="{% url 'combined_search_view' %}">جستجوی ترکیبی</a></li>
+      </ul>
+    </div>
+
+    <!-- محتوای اصلی -->
+    <div class="main-content">
+      {% block content %}
+      {% endblock %}
+    </div>
+  </div>
+</body>
+</html>

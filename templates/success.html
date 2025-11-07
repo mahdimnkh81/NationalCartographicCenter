@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موفقیت</title>
+    <style>
+        body {
+            font-family: "Vazir", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+            background: linear-gradient(135deg, #d4fc79, #96e6a1); 
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-y: auto;
+        }
+        h1 {
+            font-size: 36px;
+            font-weight: normal;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 30px 0;
+            text-align: center;
+        }
+        ul li {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #34495e;
+        }
+        a {
+            font-size: 18px;
+            color: #2ecc71;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #fff;
+            border-radius: 25px;
+            border: 1px solid #2ecc71;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        a:hover {
+            background-color: #2ecc71;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>نتیجه آپلود فایل اکسل</h1>
+    <ul>
+        {% for msg in messages %}
+        <li>{{ msg }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">بازگشت به صفحه اصلی</a>
+</body>
+</html>

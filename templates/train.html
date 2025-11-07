@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}تأیید آموزش مدل{% endblock %}
+
+{% block content %}
+  <h2>آیا از آموزش مدل مطمئن هستید؟</h2>
+
+  {% if error %}
+    <p style="color:red;">{{ error }}</p>
+  {% endif %}
+
+  <form id="trainForm" method="post" style="margin-top: 30px;">
+    {% csrf_token %}
+    <button id="trainButton" type="submit" style="
+        padding: 14px 25px;
+        font-size: 18px;
+        color: #fff;
+        background-color: #3498db;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    ">بله</button>
+
+    <a href="/" style="
+        padding: 14px 25px;
+        font-size: 18px;
+        color: #fff;
+        background-color: #2ecc71;
+        border-radius: 25px;
+        text-decoration: none;
+        margin-right: 20px;
+        transition: background-color 0.3s ease;
+    ">انصراف</a>
+  </form>
+
+  <!-- 🔹 چرخنده بارگذاری -->
+  <div id="loadingSection" style="display:none; margin-top:40px; text-align:center;">
+    <div class="spinner"></div>
+    <p style="font-size:18px; margin-top:10px;">در حال آموزش مدل، لطفاً صبر کنید...</p>
+  </div>
+
+  <style>
+    /* ظاهر چرخنده */
+    .spinner {
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #3498db;
+      border-radius: 50%;
+      width: 70px;
+      height: 70px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+
+  <script>
+    const form = document.getElementById('trainForm');
+    const loadingSection = document.getElementById('loadingSection');
+    const button = document.getElementById('trainButton');
+
+    form.addEventListener('submit', function() {
+      // نمایش چرخنده و غیرفعال کردن دکمه
+      loadingSection.style.display = 'block';
+      button.disabled = true;
+      button.textContent = "در حال آموزش...";
+    });
+  </script>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}جستجوی مدل آموزش داده شده{% endblock %}
+
+{% block content %}
+<h1>نتایج جستجوی مدل آموزش داده شده</h1>
+
+<!-- فرم جستجو -->
+<div class="search-box">
+    <form method="get" action="{% url 'search_sbert_train_model_view' %}" onsubmit="return validateSearch()">
+        <input type="text" id="searchQuery" name="query" placeholder="لایه مورد نظر را وارد کنید..." value="{{ query }}" required>
+        <button type="submit">جستجو</button>
+    </form>
+</div>
+
+<script>
+    function validateSearch() {
+        let query = document.getElementById("searchQuery").value.trim();
+        if (query === "") {
+            alert("لطفاً عبارتی برای جستجو وارد کنید.");
+            return false;
+        }
+        return true;
+    }
+</script>
+
+{% if results %}
+<!-- فرم ثبت انتخاب کاربر -->
+<form method="post" action="{% url 'log_user_selection_sbert_view' %}" class="feedback-form">
+    {% csrf_token %}
+    <input type="hidden" name="query" value="{{ query }}">
+    <input type="hidden" name="result_count" value="{{ results|length }}">
+
+    <div class="results">
+        {% for result in results %}
+        <div class="result-item">
+            <p><strong>لایه:</strong> {{ result.layer }}</p>
+            <p><strong>سازمان:</strong> {{ result.system }}</p>
+            <p><strong>امتیاز:</strong> {{ result.score }}</p>
+            <p><strong>مدل داده:</strong> {{ result.dataModel }}</p>
+
+            <div class="feedback-options">
+                <label>
+                    <input type="radio" name="selection_{{ forloop.counter }}" value="related">
+                    مرتبط
+                </label>
+                <label>
+                    <input type="radio" name="selection_{{ forloop.counter }}" value="unrelated">
+                    غیرمرتبط
+                </label>
+            </div>
+
+            <input type="hidden" name="layer_{{ forloop.counter }}" value="{{ result.layer }}">
+            <input type="hidden" name="system_{{ forloop.counter }}" value="{{ result.system }}">
+            <input type="hidden" name="score_{{ forloop.counter }}" value="{{ result.score }}">
+        </div>
+        {% endfor %}
+    </div>
+    <div class="feedback-form">
+        <button type="submit" class="feedback-btn">ثبت بازخورد</button>
+    </div>
+</form>
+{% endif %}
+{% endblock %}

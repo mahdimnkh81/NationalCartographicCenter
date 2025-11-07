@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}نتایج آموزش مدل{% endblock %}
+
+{% block content %}
+  <h2 style="color:#2c3e50; text-align:center;">✅ آموزش مدل با موفقیت انجام شد</h2>
+
+  <p style="text-align:center; margin-top:10px;">📂 مدل ذخیره شده در مسیر: <b>{{ model_dir }}</b></p>
+  <p style="text-align:center;">تعداد داده‌ها — آموزش: {{ train_size }} | ارزیابی: {{ eval_size }} | تست: {{ test_size }}</p>
+
+  <div style="display:flex; justify-content:center; gap:40px; margin-top:40px; flex-wrap:wrap;">
+    <!-- جدول قبل از آموزش -->
+    <div>
+      <h3 style="text-align:center;">📊 نتایج قبل از آموزش</h3>
+      <table border="1" style="border-collapse:collapse; width:300px; text-align:center;">
+        <thead style="background-color:#3498db; color:white;">
+          <tr><th>متریک</th><th>مقدار</th></tr>
+        </thead>
+        <tbody>
+          {% for key, value in pre_metrics.items %}
+            <tr>
+              <td>{{ key }}</td>
+              <td>{{ value|floatformat:4 }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- جدول بعد از آموزش -->
+    <div>
+      <h3 style="text-align:center;">📊 نتایج بعد از آموزش</h3>
+      <table border="1" style="border-collapse:collapse; width:300px; text-align:center;">
+        <thead style="background-color:#2ecc71; color:white;">
+          <tr><th>متریک</th><th>مقدار</th></tr>
+        </thead>
+        <tbody>
+          {% for key, value in post_metrics.items %}
+            <tr>
+              <td>{{ key }}</td>
+              <td>{{ value|floatformat:4 }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top:40px;">
+    <a href="/" style="
+        padding: 12px 25px;
+        font-size: 16px;
+        color: white;
+        background-color: #3498db;
+        text-decoration: none;
+        border-radius: 20px;
+    ">بازگشت به صفحه اصلی</a>
+  </div>
+{% endblock %}

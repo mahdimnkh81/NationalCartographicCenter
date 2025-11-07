@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>افزودن لایه و سازمان</title>
+    <style>
+        body {
+            font-family: "Vazir", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+            background: linear-gradient(135deg, #d4fc79, #96e6a1); 
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-y: auto;
+        }
+        h1 {
+            font-size: 36px;
+            font-weight: normal;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        form {
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: block;
+            text-align: right;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            border: 1px solid #2ecc71;
+            border-radius: 25px;
+            outline: none;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            text-align: right;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        input[type="text"]:focus {
+            border-color: #27ae60;
+            box-shadow: 0 0 8px rgba(39, 174, 96, 0.5);
+        }
+        button {
+            padding: 10px 30px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #2ecc71;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            outline: none;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <h1>افزودن لایه و سیستم</h1>
+<form method="POST" action="/add-document/">
+    {% csrf_token %}
+    <label for="layer">Layer:</label>
+    <input type="text" name="layer" placeholder="Enter layer" required>
+
+    <label for="system">System:</label>
+    <input type="text" name="system" placeholder="Enter system" required>
+
+    <label for="dataModel">Data Model:</label>
+    <input type="number" name="dataModel" placeholder="Enter data model" required>
+
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
