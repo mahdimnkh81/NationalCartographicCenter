@@ -78,22 +78,22 @@ WSGI_APPLICATION = 'MappingOrganization.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',  # استفاده از PostgreSQL
-        'NAME': 'MappingOrganization',                     # نام پایگاه داده
-        'USER': 'postgres',                     # نام کاربری دیتابیس
-        'PASSWORD': 'mahdi9931056',             # پسورد دیتابیس
-        'HOST': 'localhost',                     # آدرس سرور دیتابیس (مثلاً 'localhost' یا IP)
-        'PORT': '5432',                             # پورت PostgreSQL (معمولاً 5432)
+        'ENGINE': 'django.db.backends.postgresql',  
+        'NAME': 'MappingOrganization',                     
+        'USER': '',                     
+        'PASSWORD': '',            
+        'HOST': '',                    
+        'PORT': '5432',                             
     }
 }
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',  # استفاده از PostgreSQL
-#         'NAME': 'searchLayer',                     # نام پایگاه داده
-#         'USER': 'Mahdi',                     # نام کاربری دیتابیس
-#         'PASSWORD': 'Y?1777lUCIZd',             # پسورد دیتابیس
-#         'HOST': '87.248.153.146',                     # آدرس سرور دیتابیس (مثلاً 'localhost' یا IP)
-#         'PORT': '5432',                             # پورت PostgreSQL (معمولاً 5432)
+#         'ENGINE': 'django.db.backends.postgresql',  
+#         'NAME': 'searchLayer',                    
+#         'USER': '',                     
+#         'PASSWORD': '',          
+#         'HOST': '',                   
+#         'PORT': '',                            
 #     }
 # }
 
