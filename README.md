@@ -8,18 +8,18 @@ This project was developed for the **National Cartographic Center (NCC)** as par
 
 ## Features
 
-- 🔍 Hybrid Search Architecture
+  - Hybrid Search Architecture
   - Lexical search using Elasticsearch
   - Semantic search using Sentence-BERT (SBERT)
   - FAISS vector indexing for efficient similarity search
   - Automatic merging and ranking of lexical and semantic results
 
-- 🧠 Semantic Retrieval
+  - Semantic Retrieval
   - Transformer-based sentence embeddings
   - Fine-tuned SBERT model on geospatial search data
   - Support for natural language queries
 
-- 📊 Search Evaluation
+  - Search Evaluation
   - User feedback collection
   - Automatic evaluation pipeline
   - Information Retrieval metrics:
@@ -27,7 +27,7 @@ This project was developed for the **National Cartographic Center (NCC)** as par
     - Mean Average Precision (MAP)
     - Precision@K
 
-- 📈 Continuous Improvement
+  - Continuous Improvement
   - Stores user interactions
   - Uses relevance feedback to generate training datasets
   - Supports iterative model fine-tuning
